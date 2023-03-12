@@ -3,7 +3,6 @@ package tech.guimy;// Licensed under the Apache License, Version 2.0 (the "Licen
 import reactor.core.publisher.Flux;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 // you may not use this file except in compliance with the License.
@@ -25,6 +24,6 @@ public class Reactive implements Handler {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }).collect(ArrayList::new, null);
+        }).sequential().collectList().block();
     }
 }
